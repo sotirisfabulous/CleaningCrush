@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe3f0"/>
+      <stop offset=".55" stop-color="#efe6ff"/>
+      <stop offset="1" stop-color="#d9f6ea"/>
+    </linearGradient>
+    <linearGradient id="soap" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#ffd3e1"/>
+      <stop offset=".7" stop-color="#ff9fbf"/>
+    </linearGradient>
+    <radialGradient id="bub" cx=".32" cy=".3" r=".75">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset=".7" stop-color="#cdb8f5" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".8"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- tile -->
+  <rect x="116" y="150" width="280" height="280" rx="84" fill="#e2668f"/>
+  <rect x="116" y="136" width="280" height="280" rx="84" fill="url(#soap)"/>
+  <ellipse cx="200" cy="170" rx="62" ry="18" fill="#fff" opacity=".7"/>
+  <!-- soap glyph -->
+  <rect x="160" y="268" width="192" height="112" rx="44" fill="#fff"/>
+  <rect x="198" y="304" width="116" height="38" rx="19" fill="#e2668f" opacity=".35"/>
+  <circle cx="214" cy="226" r="28" fill="#fff"/>
+  <circle cx="274" cy="206" r="18" fill="#fff" opacity=".9"/>
+  <circle cx="312" cy="240" r="13" fill="#fff" opacity=".8"/>
+  <!-- bubbles -->
+  <circle cx="392" cy="122" r="44" fill="url(#bub)" stroke="#fff" stroke-width="5"/>
+  <circle cx="108" cy="404" r="30" fill="url(#bub)" stroke="#fff" stroke-width="4"/>
+  <circle cx="420" cy="214" r="18" fill="url(#bub)" stroke="#fff" stroke-width="3"/>
+  <path d="M410 340l10 30 30 10-30 10-10 30-10-30-30-10 30-10z" fill="#fff"/>
+  <path d="M96 140l7 20 20 7-20 7-7 20-7-20-20-7 20-7z" fill="#fff" opacity=".9"/>
+</svg>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Cleaning Crush</title>
+  <meta name="description" content="A satisfying pastel match-3 puzzle about scrubbing, sparkling and decluttering.">
+  <meta name="theme-color" content="#f6e9ff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Cleaning Crush">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Tile glyphs. Each tile sets `color` to its deep shade; `currentColor` draws details. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="g-soap" viewBox="0 0 24 24">
+        <circle cx="8" cy="6.2" r="2.6" fill="#fff" opacity=".95"/>
+        <circle cx="13.6" cy="4.4" r="1.7" fill="#fff" opacity=".85"/>
+        <circle cx="17.2" cy="7.6" r="1.25" fill="#fff" opacity=".75"/>
+        <rect x="3" y="10" width="18" height="10.5" rx="4.2" fill="#fff"/>
+        <rect x="6.5" y="13.4" width="11" height="3.6" rx="1.8" fill="currentColor" opacity=".35"/>
+      </symbol>
+      <symbol id="g-sponge" viewBox="0 0 24 24">
+        <rect x="3" y="5.5" width="18" height="13" rx="3.4" fill="#fff"/>
+        <rect x="3" y="15" width="18" height="3.5" rx="1.6" fill="currentColor" opacity=".3"/>
+        <circle cx="7.6" cy="9.3" r="1.35" fill="currentColor" opacity=".45"/>
+        <circle cx="12.4" cy="8.4" r=".95" fill="currentColor" opacity=".45"/>
+        <circle cx="16.4" cy="10.2" r="1.5" fill="currentColor" opacity=".45"/>
+        <circle cx="10.6" cy="12" r="1.1" fill="currentColor" opacity=".45"/>
+      </symbol>
+      <symbol id="g-spray" viewBox="0 0 24 24">
+        <path d="M8.5 2.6h7.2a1.6 1.6 0 0 1 1.5 1l1 2.4H8.5a1.7 1.7 0 0 1 0-3.4z" fill="#fff"/>
+        <rect x="10" y="6" width="5" height="3.4" rx=".8" fill="#fff"/>
+        <path d="M9.2 9.4h6.6a2.5 2.5 0 0 1 2.5 2.5v7.6a2.5 2.5 0 0 1-2.5 2.5H9.2a2.5 2.5 0 0 1-2.5-2.5v-7.6a2.5 2.5 0 0 1 2.5-2.5z" fill="#fff"/>
+        <rect x="9.2" y="13" width="6.6" height="4.6" rx="1.2" fill="currentColor" opacity=".35"/>
+        <circle cx="4.6" cy="3.2" r=".9" fill="#fff" opacity=".85"/>
+        <circle cx="3.2" cy="5.6" r=".75" fill="#fff" opacity=".7"/>
+        <circle cx="5.2" cy="6.6" r=".6" fill="#fff" opacity=".6"/>
+      </symbol>
+      <symbol id="g-drop" viewBox="0 0 24 24">
+        <path d="M12 2.2c-.5.7-7 8.3-7 13.1a7 7 0 0 0 14 0c0-4.8-6.5-12.4-7-13.1z" fill="#fff"/>
+        <path d="M8.6 15.6a3.6 3.6 0 0 0 3 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".4"/>
+      </symbol>
+      <symbol id="g-star" viewBox="0 0 24 24">
+        <path d="M11 2.5l2.2 6.6 6.6 2.2-6.6 2.2L11 20.1l-2.2-6.6-6.6-2.2 6.6-2.2z" fill="#fff"/>
+        <path d="M18.6 14.6l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z" fill="#fff" opacity=".85"/>
+        <circle cx="11" cy="11.3" r="1.6" fill="currentColor" opacity=".3"/>
+      </symbol>
+      <symbol id="g-bucket" viewBox="0 0 24 24">
+        <path d="M6.2 9.2a5.8 5.8 0 0 1 11.6 0" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="8" cy="8.6" r="2" fill="#fff" opacity=".9"/>
+        <circle cx="11.6" cy="7.6" r="2.4" fill="#fff" opacity=".9"/>
+        <circle cx="15.6" cy="8.6" r="1.9" fill="#fff" opacity=".9"/>
+        <path d="M4.4 9.8h15.2l-1.8 10.4a1.8 1.8 0 0 1-1.8 1.5H8a1.8 1.8 0 0 1-1.8-1.5z" fill="#fff"/>
+        <rect x="5.6" y="12.6" width="12.8" height="2.2" rx="1.1" fill="currentColor" opacity=".32"/>
+      </symbol>
+      <symbol id="g-rainbow" viewBox="0 0 24 24">
+        <path d="M12 3l2 5.8 6 2.2-6 2.2L12 19l-2-5.8L4 11l6-2.2z" fill="#fff"/>
+        <circle cx="12" cy="11" r="1.8" fill="#fff"/>
+      </symbol>
+      <symbol id="g-stain" viewBox="0 0 40 40">
+        <path d="M20 4c4 0 5 4 8.6 4.6 3.8.7 7.7 1.5 7.4 6.6-.2 3.4-2.6 4.2-2 7.6.6 3.6 3 6.6-.4 9.8-3.2 3-6.2.4-9.4 1.8C21 35.6 19 38 15.4 36.2c-3.4-1.8-2.4-5-6-6.4C6 28.4 3.4 26.4 4.4 22.4c.9-3.6 3.8-3.6 3.6-7.4C7.8 11 7.6 7.4 11.6 6.4 15 5.6 16.4 4 20 4z"/>
+        <circle cx="35" cy="33" r="2.2"/><circle cx="6" cy="6.5" r="1.6"/><circle cx="34" cy="5" r="1.2"/>
+      </symbol>
+      <symbol id="i-moves" viewBox="0 0 24 24">
+        <path d="M7 4h10l-1 4H8z" fill="currentColor"/><path d="M5 9h14l-2 11H7z" fill="currentColor" opacity=".55"/>
+      </symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4.2" height="14" rx="1.6" fill="currentColor"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 8.8a4.5 4.5 0 0 1 0 6.4M18 6.4a8 8 0 0 1 0 11.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+      <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V17h5v-1.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z" fill="currentColor"/><rect x="9.5" y="18.4" width="5" height="2.6" rx="1.3" fill="currentColor" opacity=".6"/></symbol>
+      <symbol id="i-starf" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.6" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="bg-bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  <!-- ===================== GAME SCREEN ===================== -->
+  <div id="app" class="screen" data-screen="game" hidden>
+    <header class="hud">
+      <div class="hud-card hud-level">
+        <span class="hud-label">Level</span>
+        <span class="hud-value" id="hud-level">1</span>
+      </div>
+      <div class="hud-card hud-moves" id="hud-moves-card">
+        <span class="hud-label">Moves</span>
+        <span class="hud-value" id="hud-moves">20</span>
+      </div>
+      <div class="hud-card hud-score">
+        <div class="score-row">
+          <span class="hud-label">Score</span>
+          <span class="hud-value small" id="hud-score">0</span>
+        </div>
+        <div class="score-bar">
+          <div class="score-fill" id="score-fill"></div>
+          <svg class="score-star" data-star="0"><use href="#i-starf"/></svg>
+          <svg class="score-star" data-star="1"><use href="#i-starf"/></svg>
+          <svg class="score-star" data-star="2"><use href="#i-starf"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <section class="goals" id="goals" aria-label="Level goals"></section>
+
+    <main id="board-area">
+      <div id="board-wrap">
+        <div id="board" role="grid" aria-label="Game board">
+          <div id="cells"></div>
+          <div id="tiles"></div>
+          <div id="stains"></div>
+          <div id="board-fx"></div>
+        </div>
+      </div>
+      <div id="banner" aria-live="polite"></div>
+    </main>
+
+    <footer class="toolbar">
+      <button class="icon-btn" id="btn-pause" aria-label="Pause"><svg><use href="#i-pause"/></svg></button>
+      <button class="icon-btn" id="btn-hint" aria-label="Show a hint"><svg><use href="#i-bulb"/></svg></button>
+      <button class="icon-btn" id="btn-sound" aria-label="Toggle sound"><svg><use href="#i-sound"/></svg></button>
+    </footer>
+  </div>
+
+  <!-- ===================== TITLE SCREEN ===================== -->
+  <div id="title" class="screen" data-screen="title">
+    <div class="title-wrap">
+      <div class="logo" aria-hidden="true">
+        <div class="logo-tiles">
+          <span class="t t0"><svg><use href="#g-soap"/></svg></span>
+          <span class="t t1"><svg><use href="#g-sponge"/></svg></span>
+          <span class="t t2"><svg><use href="#g-spray"/></svg></span>
+        </div>
+      </div>
+      <h1 class="game-title"><span>Cleaning</span><span>Crush</span></h1>
+      <p class="tagline">Match, scrub &amp; sparkle your way to a spotless home.</p>
+      <button class="btn btn-primary" id="btn-play">Play <span id="play-level"></span></button>
+      <button class="btn btn-ghost" id="btn-levels">Levels</button>
+      <button class="btn btn-ghost" id="btn-install" hidden>Install app</button>
+      <p class="how">Swipe or tap two neighbours to swap. Match 4 for a <b>Squeegee</b>, an L or T for a <b>Fizz Bomb</b>, 5 in a row for a <b>Super Soap</b>.</p>
+    </div>
+  </div>
+
+  <!-- ===================== LEVEL SELECT ===================== -->
+  <div id="levels" class="screen" data-screen="levels" hidden>
+    <div class="levels-head">
+      <button class="icon-btn" id="btn-levels-back" aria-label="Back">&larr;</button>
+      <h2>Levels</h2>
+      <span class="levels-stars" id="levels-stars"></span>
+    </div>
+    <div class="levels-grid" id="levels-grid"></div>
+  </div>
+
+  <!-- ===================== MODAL ===================== -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-stars" id="modal-stars"></div>
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <div class="modal-goals" id="modal-goals"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <script src="js/audio.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
